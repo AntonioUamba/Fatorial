@@ -1,25 +1,72 @@
-// inserindo as bibliotecas
+#include<16f628a.h>
+#fuses xt,put,nowdt,noprotect,nomclr
+#use delay(internal=4Mhz)
+#use standard_io(b)
+#use standard_io(a)
 
-#include <16F628A.h>
-#fuses XT, NOMCLR, NOWDT
-#use delay(clock=4MHz)
+// Questão 9
 
-// declara;ão das variaveis 
-int8 disp[] = {
-   0b00111111, 0b00000110, 0b01011011, 0b01001111,
-   0b01100110, 0b01101101, 0b01111100, 0b00000111,
-   0b01111111, 0b01100111
-};
+int display[10]={0b0000001, 0b1001111, 0b0010010, 0b0000110, 0b1001100, 0b0100100, 0b0100000, 0b0001111, 0b000000, 0b0000100};
 
-void main () {
+void main() 
 
-   int numero = 0;   
-   while (true) { 
-      output_b( disp[numero] );
-      numero++;
-      if (numero > 9) {
-         numero = 0;
-      }
-      delay_ms(500);
+{
+ int unidade = 0;
+ int dezena = 0;
+ int tempo = 5;
+ output_b(0b00000000);
+ 
+ 
+ while (true){
+   
+   
+   if (input(pin_a2)== 1 || input(pin_a3)== 1 || input(pin_a4)== 1)
+   {
+    output_a(0b10);
+    output_b(display[unidade]);
+    delay_ms(tempo);
+    output_a(0b01);
+    output_b(display[dezena]);
+    delay_ms(tempo);
    }
+   else
+   {
+    delay_ms(5);
+    output_a(0b10);
+    output_b(display[unidade]);
+    delay_ms(tempo);
+    output_a(0b01);
+    output_b(display[dezena]);
+    delay_ms(tempo);
+    
+      if (input(pin_a2)==1)
+      {
+       unidade++;
+       if (unidade>9)
+       {
+       dezena++;
+       unidade=0;
+       }
+       
+       if(dezena>9)
+       {
+       dezena=0;
+       unidade=0;
+       }
+       
+      }    
+   }   
+ }
 }
+  
+
+      
+       
+    
+   
+   
+ 
+
+
+
+
