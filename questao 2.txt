@@ -1,0 +1,22 @@
+Para implementar esta questao,precisou-se de :
+
+PIC16F877A microcontrolador
+Motor DC
+Circuito de driver para o motor (por exemplo, L298N)
+Botões de entrada
+Display LCD
+Circuito de interface para o display LCD (por exemplo, PCF8574)
+Resistores de pull-up para os botões de entrada
+Diodos de proteção para os botões de entrada
+Capacitores de filtro para a alimentação do microcontrolador e do circuito de driver do motor
+Circuito de alimentação para todo o projeto
+A primeira etapa foi  esquematizar o circuito no Proteus. Conectando  o microcontrolador ao display LCD e ao circuito de driver do motor. Os botões de entrada também  conectados ao microcontrolador. adicionou-se os resistores 
+Depois de esquematizar o circuito, é hora de escrever o código em C para o microcontrolador. O código deve fazer o seguinte:
+
+Inicializar o display LCD.
+Configurar os pinos do microcontrolador que estão conectados aos botões de entrada como entradas e habilitar os resistores de pull-up.
+Configurar os pinos do microcontrolador que estão conectados ao circuito de driver do motor como saídas.
+Iniciar um loop infinito.
+Lê os estados dos botões de entrada. Se um botão foi pressionado, altera o estado do motor de acordo. Por exemplo, se o botão de sentido horário foi pressionado   ira acender a led verde , o motor deve começar a girar no sentido horário. Se o botão de sentido anti-horário foi pressionado acende o amarelo, o motor deve começar a girar no sentido anti-horário. Se o botão de parada foi pressionado scende vermelho, o motor deve parar.
+Atualiza a mensagem exibida no display LCD de acordo com o estado atual do motor.
+Volta para o início do loop.
